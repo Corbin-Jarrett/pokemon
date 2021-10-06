@@ -1,0 +1,125 @@
+{
+    "starters": [
+        {
+            "Name": "Bulbasaur",
+            "Nickname": "Bulbasaur",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Ivysaur",
+            "Evolution_Level": 16,
+            "Evolution2": "Venusaur",
+            "Evolution_Level2": 32
+        },
+        {
+            "Name": "Squirtle",
+            "Nickname": "Squirtle",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Wartortle",
+            "Evolution_Level": 16
+        },
+        {
+            "Name": "Charmander",
+            "Nickname": "Charmander",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Charmeleon",
+            "Evolution_Level": 16
+        }
+
+    ],
+
+    "wild_set_1": [
+        {
+            "Name": "Rattata",
+            "Nickname": "Rattata",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Raticate",
+            "Evolution_Level": 20,
+            "Evolution_Level2": "None"
+        },
+        {
+            "Name": "Caterpie",
+            "Nickname": "Caterpie",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Metapod",
+            "Evolution_Level": 7
+        },
+        {
+            "Name": "Weedle",
+            "Nickname": "Weedle",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Kakuna",
+            "Evolution_Level": 7
+        },
+        {
+            "Name": "Pidgey",
+            "Nickname": "Pidgey",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Pidgeotto",
+            "Evolution_Level": 18
+        }
+    ],
+
+    "wild_set_2": [],
+
+    "wild_set_3": [],
+
+    "wild_set_4": [],
+
+    "wild_set_5": []
+
+}

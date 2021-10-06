@@ -1,0 +1,38 @@
+{
+    "Username": "Corbin",
+    "Level": 1,
+    "Xp": 0,
+    "Starter": true,
+    "Pokemon": [
+        {
+            "Name": "Charmander",
+            "Nickname": "flamry",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Charmeleon",
+            "Evolution_Level": 16
+        },
+        {
+            "Name": "Weedle",
+            "Nickname": "da",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Kakuna",
+            "Evolution_Level": 7
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "Username": "Corbin",
+    "Level": 1,
+    "Xp": 0,
+    "Starter": true,
+    "Pokemon": [
+        {
+            "Name": "Bulbasaur",
+            "Nickname": "Bulbasaur",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Ivysaur",
+            "Evolution_Level": 16,
+            "Evolution2": "Venusaur",
+            "Evolution_Level2": 32
+        },
+        {
+            "Name": "Caterpie",
+            "Nickname": "jkljl",
+            "Hp": 5,
+            "Attack": 5,
+            "Defence": 5,
+            "Spa": 5,
+            "Spd": 5,
+            "Speed": 5,
+            "Moves": [],
+            "Level": 1,
+            "Xp": 0,
+            "Evolution": "Metapod",
+            "Evolution_Level": 7
+        }
+    ]
+}
