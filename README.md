@@ -7,3 +7,5 @@ The Pokemon.py file has all of the python code, testing.py is just for testing i
 The Users.json is an older file and is also for testing. Corbin.json is for testing execution of the code and is how user data is stored.
 
 Usernames.txt is a list of all the usernames the code has.
+
+pokemon.json is the pokemon data that each pokemon initially has before going to the user account.
