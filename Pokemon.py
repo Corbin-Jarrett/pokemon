@@ -245,13 +245,6 @@ def encounterPokemon(Username):
     else:
         print("No pokemon for you!")
 
-removeUser("Corbin")
-
-createUser("Corbin")
-getAStarter("Corbin")
-
-encounterPokemon("Corbin")
-
 
 #get xp testing
 '''
