@@ -4,6 +4,31 @@ import time
 import os
 
 
+def playerGetXp(Username, amount):
+    #opening user's data
+    with open(f"{Username}.json", 'r') as f:
+        player_info = json.load(f)
+
+    level = player_info["Level"]
+    xp = player_info["Xp"]
+
+    #adding amount of xp to player's xp
+    xp_to_level = level*50
+    xp += amount
+
+    #leveling up
+    if xp >= xp_to_level:
+        xp -= xp_to_level
+        level += 1
+        print("You have leveled up to level {}!".format(level))
+
+    player_info["Level"] = level
+    player_info["Xp"] = xp
+
+    with open(f"{Username}.json", 'w') as f:
+        json.dump(player_info, f, indent=4)
+
+
 def getXp(pokemon, amount):
     #Getting data from json
     level = pokemon["Level"]
@@ -118,7 +143,7 @@ def removeUser(Username):
         print("Sucessfully Removed User")
 
 def getAStarter(Username):
-    #opening usernames as a list of usernames
+    '''#opening usernames as a list of usernames
     with open("usernames.txt") as f:
         usernames = f.readlines()
     
@@ -129,7 +154,7 @@ def getAStarter(Username):
     #if the desired username is not there, it is rejected
     if Username not in usernames:
         print("Username does not exist, try again")
-        return
+        return'''
 
     #opening updated users pokemon data
     with open(f"{Username}.json", 'r') as f:
