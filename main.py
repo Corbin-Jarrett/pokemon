@@ -6,3 +6,5 @@ createUser("Corbin")
 getAStarter("Corbin")
 
 encounterPokemon("Corbin")
+
+playerGetXp("Corbin", 20)

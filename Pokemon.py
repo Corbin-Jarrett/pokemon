@@ -2,6 +2,19 @@ import json
 import random
 import time
 import os
+import sys
+
+def delay_print(string):
+    for character in string:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.0175)
+    sys.stdout.write("\n")
+
+
+#opening pokemon info, this does not change
+with open("pokemon.json", 'r') as f:
+    poke_info = json.load(f)
 
 
 def playerGetXp(Username, amount):
@@ -12,6 +25,8 @@ def playerGetXp(Username, amount):
     level = player_info["Level"]
     xp = player_info["Xp"]
 
+    delay_print("You have gained {} xp".format(amount))
+
     #adding amount of xp to player's xp
     xp_to_level = level*50
     xp += amount
@@ -20,7 +35,7 @@ def playerGetXp(Username, amount):
     if xp >= xp_to_level:
         xp -= xp_to_level
         level += 1
-        print("You have leveled up to level {}!".format(level))
+        delay_print("You have leveled up to level {}!".format(level))
 
     player_info["Level"] = level
     player_info["Xp"] = xp
@@ -35,6 +50,8 @@ def getXp(pokemon, amount):
     xp = pokemon["Xp"]
     nickname = pokemon["Nickname"]
 
+    delay_print("Your {} gained {} xp!".format(nickname, amount))
+
     #adding amount of xp to pokemon's xp
     xp_to_level = level*50
     xp += amount
@@ -44,7 +61,7 @@ def getXp(pokemon, amount):
         #lower xp and increase level by 1
         xp -= xp_to_level
         level += 1
-        print("Congratulations! Your {} grew to level {}.".format(nickname, level))
+        delay_print("Congratulations! Your {} grew to level {}.".format(nickname, level))
         
         #increase stats for 4/6 stats
         list_of_traits = ["Hp","Attack","Defence", "Spa", "Spd", "Speed"]
@@ -62,15 +79,15 @@ def getXp(pokemon, amount):
 
         #if pokemon is level to evolve, change name to evolution name
         if level == pokemon["Evolution_Level2"]:
-            print("What?! Your {} is evolving!".format(pokemon["Nickname"]))
+            delay_print("What?! Your {} is evolving!".format(pokemon["Nickname"]))
             time.sleep(3)
-            print("Congratulations! Your {} evolved into {}!".format(pokemon["Name"], pokemon["Evolution2"]))
+            delay_print("Congratulations! Your {} evolved into {}!".format(pokemon["Name"], pokemon["Evolution2"]))
             pokemon["Name"] = pokemon["Evolution2"] 
 
         elif level == pokemon["Evolution_Level"]:
-            print("What?! Your {} is evolving!".format(pokemon["Nickname"]))
+            delay_print("What?! Your {} is evolving!".format(pokemon["Nickname"]))
             time.sleep(3)
-            print("Congratulations! Your {} evolved into {}!".format(pokemon["Nickname"], pokemon["Evolution"]))
+            delay_print("Congratulations! Your {} evolved into {}!".format(pokemon["Nickname"], pokemon["Evolution"]))
             pokemon["Name"] = pokemon["Evolution"]  
 
         #call getXp with 0 amount added in case there is enough xp to level up again
@@ -79,15 +96,11 @@ def getXp(pokemon, amount):
     #return updated json infomation
     return pokemon
 
-#opening pokemon info, this does not change
-with open("pokemon.json", 'r') as f:
-    poke_info = json.load(f)
-
 def createUser(Username1):
     #Removing any whitespace before or after and if the length is more than 15 characters it is rejected
     Username = Username1.strip()
-    if len(Username) > 15:
-        print("Name cannot be longer than 15 characters, please try again")
+    if len(Username) > 15 or len(Username) < 3:
+        delay_print("Name must be in between 3 and 15 characters, please try again")
         return
 
     #opening usernames as a list of usernames
@@ -100,7 +113,7 @@ def createUser(Username1):
         
     #if the desired username is already there, it is rejected
     if Username in usernames:
-        print("Username already exists, try again")
+        delay_print("Username already exists, try again")
         return
 
     #opening usernames and adding new username
@@ -113,7 +126,7 @@ def createUser(Username1):
     with open(f"{Username}.json", 'w') as f:
         json.dump(userTemplate, f, indent=4)
 
-    print("User {} added, welcome {}".format(Username, Username))
+    delay_print("User {} added, welcome {}".format(Username, Username))
 
         
 def removeUser(Username):
@@ -134,13 +147,14 @@ def removeUser(Username):
             for element in usernames:
                 f.write(element + "\n")
 
+        #deleting user's json data file
         try:
             os.remove(f"{Username}.json")
 
         except:
-            print("No such user exists")
+            delay_print("No such user exists")
 
-        print("Sucessfully Removed User")
+        delay_print("Sucessfully Removed User")
 
 def getAStarter(Username):
     '''#opening usernames as a list of usernames
@@ -162,35 +176,39 @@ def getAStarter(Username):
 
     #checking if they already have a starter
     if player_info["Starter"] == True:
-        print("You already have a starter!")
+        delay_print("You already have a starter!")
         return
         
 
     #Getting all the starters and letting them choose
     starters = poke_info["starters"]
-    starter_num = input("What starter do you want? 1:{}, 2:{}, or 3:{}? ".format(starters[0]["Name"], starters[1]["Name"], starters[2]["Name"]))
+    delay_print("What starter do you want? 1:{}, 2:{}, or 3:{}? ".format(starters[0]["Name"], starters[1]["Name"], starters[2]["Name"]))
+    starter_num = input()
     
     #depending on option chosen, adding this pokemon to their pokemon
     if starter_num == "1":
-        nickname = input("What do you want to call your {}? ".format(starters[0]["Name"]))
+        delay_print("What do you want to call your {}? ".format(starters[0]["Name"]))
+        nickname = input()
         poke_info_changed = poke_info
         poke_info_changed["starters"][0]["Nickname"] = nickname
         player_info["Pokemon"].append(poke_info_changed["starters"][0])
 
     elif starter_num == "2":
-        nickname = input("What do you want to call your {}? ".format(starters[1]["Name"]))
+        delay_print("What do you want to call your {}? ".format(starters[1]["Name"]))
+        nickname = input()
         poke_info_changed = poke_info
         poke_info_changed["starters"][1]["Nickname"] = nickname
         player_info["Pokemon"].append(poke_info_changed["starters"][1])
 
     elif starter_num == "3":
-        nickname = input("What do you want to call your {}? ".format(starters[2]["Name"]))
+        delay_print("What do you want to call your {}? ".format(starters[2]["Name"]))
+        nickname = input()
         poke_info_changed = poke_info
         poke_info_changed["starters"][2]["Nickname"] = nickname
         player_info["Pokemon"].append(poke_info_changed["starters"][2])
 
     else:
-        print("Invalid Starter number, try again")
+        delay_print("Invalid Starter number, try again")
         return
 
     #making it so they cannot get another starter
@@ -199,7 +217,7 @@ def getAStarter(Username):
     with open(f"{Username}.json", 'w') as f:
         json.dump(player_info, f, indent=4)
 
-    print("Congratulations! You and {} are going to have amazing adventures together!".format(nickname))
+    delay_print("Congratulations! You and {} are going to have amazing adventures together!".format(nickname))
     
 
 def encounterPokemon(Username):
@@ -226,24 +244,26 @@ def encounterPokemon(Username):
     
     
     #Asking if wanting to catch
-    answer = input("You have encountered a {}! Do you want to throw a pokeball? y/n ".format(wild_encounter["Name"]))
+    delay_print("You have encountered a {}! Do you want to throw a pokeball? y/n".format(wild_encounter["Name"]))
+    answer = input()
     if answer.strip() == "y":
         time.sleep(3)
 
         #getting nickname for pokemon
-        nickname = input("You have caught the {}. What would you like to call it? ".format(wild_encounter["Name"]))
+        delay_print("You have caught the {}. What would you like to call it?".format(wild_encounter["Name"]))
+        nickname = input()
         wild_encounter["Nickname"] = nickname
 
         #adding pokemon to player's pokemon
         player_info["Pokemon"].append(wild_encounter)
 
-        print("I'm sure you and {} are going to be great friends!".format(nickname))
+        delay_print("I'm sure you and {} are going to be great friends!".format(nickname))
 
         with open(f"{Username}.json", 'w') as f:
             json.dump(player_info, f, indent=4)
     
     else:
-        print("No pokemon for you!")
+        delay_print("No pokemon for you!")
 
 
 #get xp testing
